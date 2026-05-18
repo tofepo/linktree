@@ -195,6 +195,10 @@
                     </p>
                 </div>
             </div>
+            <a href="https://tofepo.blogspot.com/p/quem-e-o-tofepo.html"
+                        class="mt-10 px-10 py-4 border border-slate-600 text-slate-400 text-center font-bold pixel-font hover:text-cyan-400 hover:border-cyan-400 transition-colors">
+                        Quem é o Tofepo?
+                    </a>
 
         </div>
     </header>
@@ -241,7 +245,7 @@
                 <h2 class="pixel-font text-lg text-purple-400 mb-3">/COMUNIDADE</h2>
                 <ul class="space-y-3 text-sm">
                     <li>
-                        <a href="https://chat.whatsapp.com/CZuTBfWdxDe5JnnBvTi1Au" target="_blank"
+                        <a href="https://chat.whatsapp.com/DZTKx20KxwbAFKaEeEApWf" target="_blank"
                             class="flex items-center gap-2 group">
                             <span class="text-purple-500 pixel-font">>></span>
                             <span
@@ -250,7 +254,16 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://discord.gg/TST4pKvh" target="_blank" class="flex items-center gap-2 group">
+                        <a href="https://whatsapp.com/channel/0029Vb8EewBL2ATtGBtzMH19" target="_blank"
+                            class="flex items-center gap-2 group">
+                            <span class="text-purple-500 pixel-font">>></span>
+                            <span
+                                class="group-hover:translate-x-1 transition-transform group-hover:text-purple-300">Canal do WhatsApp
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://discord.gg/QtnFdbxsHR" target="_blank" class="flex items-center gap-2 group">
                             <span class="text-purple-500 pixel-font">>></span>
                             <span
                                 class="group-hover:translate-x-1 transition-transform group-hover:text-purple-300">Discord
@@ -443,22 +456,80 @@
                                 Se você é artista, pode nos seguir apenas no <span
                                     class="text-pink-400 font-bold">Pinterest</span> para ver as artes.
                                 Mas se quiser o resumo completo, inscreva-se no nosso <span
-                                    class="text-cyan-400">Terminal
-                                    de Transmissão</span>:
+                                    class="text-cyan-400">Terminal de Transmissão</span>:
                                 receba atualizações integradas toda quarta-feira e mergulhe apenas no que te interessa.
                             </p>
                         </div>
 
                         <div class="flex flex-col gap-3 w-full md:w-auto">
-                            <a href="https://tofepo.substack.com/?utm_campaign=pub&utm_medium=web" target="_blank"
+                            <button id="openDialogBtn"
                                 class="px-6 py-3 bg-cyan-500 text-black font-bold pixel-font hover:bg-white transition-all shadow-[4px_4px_0px_#000] active:shadow-none active:translate-x-1 active:translate-y-1">
                                 INSCREVER.EXE
-                            </a>
-                            <a href="https://substack.com/@tofepo/posts"
+                            </button>
+
+                            <a href="https://tofepo.blogspot.com/p/terminal-de-transmissao-semanal.html"
                                 class="px-6 py-2 border border-slate-600 text-slate-400 text-center font-bold pixel-font text-xs hover:text-cyan-400 hover:border-cyan-400 transition-colors">
                                 OLD_TRANSMISSIONS
                             </a>
                         </div>
+
+                        <dialog id="newsletterDialog"
+                            class="backdrop:bg-black/70 bg-slate-900 border-2 border-cyan-400 p-6 rounded-none shadow-[8px_8px_0px_#000] max-w-md w-full text-slate-200">
+                            <div class="flex justify-between items-center mb-4 border-b border-slate-700 pb-2">
+                                <h3 class="pixel-font text-cyan-400 text-lg">CONEXÃO_TERMINAL.SYS</h3>
+                                <button id="closeDialogBtn"
+                                    class="text-slate-400 hover:text-pink-400 font-bold pixel-font">[X]</button>
+                            </div>
+
+                            <form action="https://formspree.io/f/xwvzppdd" method="POST" class="flex flex-col gap-4">
+                                <div class="flex flex-col gap-1">
+                                    <label class="pixel-font text-xs text-slate-400">EMAIL_ADDRESS:</label>
+                                    <input type="email" name="email" required
+                                        class="bg-slate-950 border border-slate-700 p-2 text-slate-100 focus:outline-none focus:border-cyan-400">
+                                </div>
+
+                                <div class="flex flex-col gap-1">
+                                    <label class="pixel-font text-xs text-slate-400">MESSAGE (OPTIONAL):</label>
+                                    <textarea name="message" rows="3"
+                                        class="bg-slate-950 border border-slate-700 p-2 text-slate-100 focus:outline-none focus:border-cyan-400 resize-none"></textarea>
+                                </div>
+
+                                <button
+                                    class="mt-2 px-6 py-3 bg-cyan-500 text-black font-bold pixel-font hover:bg-white transition-all shadow-[4px_4px_0px_#000] active:shadow-none active:translate-x-1 active:translate-y-1"
+                                    type="submit">
+                                    ENVIAR_DADOS
+                                </button>
+                            </form>
+                        </dialog>
+
+                        <script>
+                            const dialog = document.getElementById('newsletterDialog');
+                            const openBtn = document.getElementById('openDialogBtn');
+                            const closeBtn = document.getElementById('closeDialogBtn');
+
+                            // Abre o dialog com o fundo escurecido (showModal)
+                            openBtn.addEventListener('click', () => {
+                                dialog.showModal();
+                            });
+
+                            // Fecha o dialog ao clicar no [X]
+                            closeBtn.addEventListener('click', () => {
+                                dialog.close();
+                            });
+
+                            // Fecha se o usuário clicar fora da caixinha (no fundo escuro)
+                            dialog.addEventListener('click', (e) => {
+                                const dialogDimensions = dialog.getBoundingClientRect();
+                                if (
+                                    e.clientX < dialogDimensions.left ||
+                                    e.clientX > dialogDimensions.right ||
+                                    e.clientY < dialogDimensions.top ||
+                                    e.clientY > dialogDimensions.bottom
+                                ) {
+                                    dialog.close();
+                                }
+                            });
+                        </script>
                     </div>
                 </div>
             </section>
@@ -518,11 +589,11 @@
                         </div>
                         <div class="flex flex-wrap gap-4 mt-4">
 
-                            <a href="https://whatsapp.com/channel/0029VbCU5MX7z4kbMqZ2Mv2X_" target="_blank"
+                            <a href="https://whatsapp.com/channel/0029VbCU5MX7z4kbMqZ2Mv2X" target="_blank"
                                 class="inline-block px-2 py-1 bg-amber-600 text-black font-bold pixel-font hover:bg-white transition-colors text-sm tracking-wider">
                                 Canal do Whatsapp
                             </a>
-                            <a href="https://discord.gg/CEaFUFXa" target="_blank"
+                            <a href="https://discord.gg/BJb5QwstPS" target="_blank"
                                 class="inline-block px-2 py-1 bg-amber-600 text-black font-bold pixel-font hover:bg-white transition-colors text-sm tracking-wider">
                                 Servidor do Discord
                             </a>
